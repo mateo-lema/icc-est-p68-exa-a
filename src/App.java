@@ -1,3 +1,7 @@
+import controllers.LeagueController;
+import models.League;
+import models.Player;
+import models.Team;
 
 public class App {
 
@@ -16,6 +20,7 @@ public class App {
          * [6] MLS USA = 51
          * [7] Liga MX Mexico = 46
          */
+
         public static League[] getLeagues() {
 
                 // ===== Liga Pro Ecuador: total active goals = 42 =====
@@ -176,5 +181,19 @@ public class App {
                 // TODO: Realizar busqueda 2 e imprimir si se encontro o no
                 // Fila A: buscar 55 goles activos
                 // Fila B: buscar 40 goles activos
+
+                League[] leagues =  getLeagues();
+                LeagueController controller = new LeagueController();
+
+                controller.printLeagues(leagues);
+
+                controller.sortInsertionDesc(leagues);
+
+                controller.binarySearchByTotalActiveGoals(leagues,67);
+                controller.binarySearchByTotalActiveGoals(leagues,40);
+
+
+
         }
+
 }

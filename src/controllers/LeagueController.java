@@ -29,7 +29,16 @@ public class LeagueController {
      */
     public League[] sortInsertionDesc(League[] leagues) {
         // TODO: Implementar (solo si su fila es B)
-        throw new UnsupportedOperationException("Metodo sortInsertionDesc no implementado");
+        for(int i=1;i<leagues.length;i++){
+            League aux=leagues[i];
+            int j=i-1;
+            while(j>=0 && leagues[j].getTotalActiveGoals()<aux.getTotalActiveGoals()){
+                leagues[j+1]=leagues[j];
+                j--;
+            }
+            leagues[j+1]=aux;
+        }
+        return leagues;
     }
 
     /**
@@ -47,8 +56,20 @@ public class LeagueController {
      * @return La liga encontrada, o null si no existe
      */
     public League binarySearchByTotalActiveGoals(League[] leagues, int totalActiveGoals) {
-        // TODO: Implementar
-        throw new UnsupportedOperationException("Metodo binarySearchByTotalActiveGoals no implementado");
+        int alto=leagues.length-1;
+        int bajo=0;
+        while(bajo<=alto){
+            int centro=(bajo+alto/2);
+            if(leagues[centro].getTotalActiveGoals()==totalActiveGoals){
+                return leagues[centro];
+            }
+            if(leagues[centro].getTotalActiveGoals()>totalActiveGoals){
+                bajo=centro+1;
+            }else{
+                alto=centro-1;
+            }
+        }
+        return null;
     }
 
     /**
@@ -57,6 +78,11 @@ public class LeagueController {
      * @param leagues Arreglo de ligas a imprimir
      */
     public void printLeagues(League[] leagues) {
-
+        for(int i=0;i<leagues.length;i++){
+            System.out.println(leagues[i]);
+        }
     }
+
 }
+
+
