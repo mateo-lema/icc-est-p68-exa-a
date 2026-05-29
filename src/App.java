@@ -180,7 +180,7 @@ public class App {
 
                 // TODO: Realizar busqueda 2 e imprimir si se encontro o no
                 // Fila A: buscar 55 goles activos
-                // Fila B: buscar 40 goles activos
+                // Fila B: buscar 40 goles activo
 
                 League[] leagues =  getLeagues();
                 LeagueController controller = new LeagueController();
